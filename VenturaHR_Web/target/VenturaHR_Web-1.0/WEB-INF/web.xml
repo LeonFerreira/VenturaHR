@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <security-constraint>
+        <display-name>Todos os Usuários</display-name>
+        <web-resource-collection>
+            <web-resource-name>Área de Todos os Usuários</web-resource-name>
+            <description/>
+            <url-pattern>/usuarios/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Início</web-resource-name>
+            <description/>
+            <url-pattern>/index.jsp</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>administrador</role-name>
+            <role-name>empresa</role-name>
+            <role-name>cadidato</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Área das Empresas</display-name>
+        <web-resource-collection>
+            <web-resource-name>Área das Empresas</web-resource-name>
+            <description/>
+            <url-pattern>/empresas/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>empresa</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Área dos Candidatos</display-name>
+        <web-resource-collection>
+            <web-resource-name>Área dos Candidatos</web-resource-name>
+            <description/>
+            <url-pattern>/candidatos/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>cadidato</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>VenturaHR</realm-name>
+        <form-login-config>
+            <form-login-page>/home.jsp</form-login-page>
+            <form-error-page>/home.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>administrador</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>empresa</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>cadidato</role-name>
+    </security-role>
+</web-app>
